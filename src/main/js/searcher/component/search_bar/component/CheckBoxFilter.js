@@ -5,7 +5,7 @@ const CheckBoxFilter = props => {
 
   const onCheckedChange = e => {
     setIsChecked(e.target.checked);
-    props.setFilter(e.target.checked);
+    props.setFilter(e.target.checked === true ? true : false);
   };
 
   return (
@@ -19,7 +19,6 @@ const CheckBoxFilter = props => {
         </label>
         <input
           id={props.name}
-          name={props.name}
           className="checkbox-filter"
           type="checkbox"
           onChange={onCheckedChange}

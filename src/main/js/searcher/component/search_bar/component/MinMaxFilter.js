@@ -1,29 +1,47 @@
 import { useState } from 'react';
 
 const MinMaxFilter = props => {
-  const [minValue, setMinValue] = useState();
-  const [maxValue, setMaxValue] = useState();
+  const [minValue, setMinValue] = useState('');
+  const [maxValue, setMaxValue] = useState('');
+
+  const onMinBlur = e => {
+    props.setFilter({
+      [props.minName]: getFilterValue(minValue),
+    });
+  };
+
+  const onMaxBlur = e => {
+    props.setFilter({
+      [props.maxName]: getFilterValue(maxValue),
+    });
+  };
+
+  const getFilterValue = value => {
+    if (!!value) {
+      if (props.asArray === true) {
+        if (props.type === 'number') {
+          return [Number(value)];
+        } else {
+          return [value];
+        }
+      } else {
+        if (props.type === 'number') {
+          return Number(value);
+        } else {
+          return value;
+        }
+      }
+    } else {
+      return null;
+    }
+  };
 
   const onMinValueChange = e => {
     setMinValue(e.target.value);
-    props.setFilter({
-      [props.minName]: !!e.target.value
-        ? props.type === 'number'
-          ? Number(e.target.value)
-          : e.target.value
-        : null,
-    });
   };
 
   const onMaxValueChange = e => {
     setMaxValue(e.target.value);
-    props.setFilter({
-      [props.maxName]: !!e.target.value
-        ? props.type === 'number'
-          ? Number(e.target.value)
-          : e.target.value
-        : null,
-    });
   };
 
   return (
@@ -41,15 +59,17 @@ const MinMaxFilter = props => {
             className="min-max-filter"
             id={props.minName}
             type={props.type}
-            value={minValue === 0 ? '' : minValue}
-            onBlur={onMinValueChange}
+            value={minValue}
+            onChange={onMinValueChange}
+            onBlur={onMinBlur}
           />
           <input
             className="min-max-filter"
             id={props.maxName}
             type={props.type}
-            value={maxValue === 0 ? '' : maxValue}
-            onBlur={onMaxValueChange}
+            value={maxValue}
+            onChange={onMaxValueChange}
+            onBlur={onMaxBlur}
           />
         </div>
       </li>

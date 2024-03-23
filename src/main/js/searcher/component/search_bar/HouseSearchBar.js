@@ -93,6 +93,7 @@ const HouseSearchBar = props => {
         minName="minConstructionYear"
         maxName="maxConstructionYear"
         setFilter={props.setFilterParameter}
+        asArray={true}
       ></MinMaxFilter>
       <MinMaxFilter
         label="Living Area"
@@ -100,6 +101,7 @@ const HouseSearchBar = props => {
         minName="minLivingArea"
         maxName="maxLivingArea"
         setFilter={props.setFilterParameter}
+        asArray={true}
       ></MinMaxFilter>
       <MinMaxFilter
         label="Bedroom"
@@ -107,6 +109,7 @@ const HouseSearchBar = props => {
         minName="minBedroom"
         maxName="maxBedroom"
         setFilter={props.setFilterParameter}
+        asArray={true}
       ></MinMaxFilter>
       <MinMaxFilter
         label="Energy Label"
@@ -114,6 +117,7 @@ const HouseSearchBar = props => {
         minName="minEnergyLabel"
         maxName="maxEnergyLabel"
         setFilter={props.setFilterParameter}
+        asArray={true}
       ></MinMaxFilter>
     </div>
   );
