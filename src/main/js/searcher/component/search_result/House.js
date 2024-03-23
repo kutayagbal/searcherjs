@@ -32,8 +32,8 @@ const House = props => {
       ></DoubleValue>
       <SigleValue label="Area :" value={props.product.livingArea}></SigleValue>
       <SigleValue label="Bedroom :" value={bedroom + '/' + totalRoom}></SigleValue>
-      <SigleValue label="Energy Label :" value={props.product.energyLabel}></SigleValue>
       <SigleValue label="Story :" value={story + '/' + totalStory}></SigleValue>
+      <SigleValue label="Energy Label :" value={props.product.energyLabel}></SigleValue>
     </div>
   );
 };
